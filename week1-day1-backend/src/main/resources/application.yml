@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: week1-day1-backend
+  profile:
+    active: dev
+
+server:
+  port: 8080
+  servlet:
+    context-path: /api
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    enabled: true
