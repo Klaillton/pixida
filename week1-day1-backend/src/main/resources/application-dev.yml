@@ -1,0 +1,59 @@
+spring:
+  application:
+    name: pixida-backend-dev
+
+  # ==================== DATASOURCE - H2 (Fallback) ====================
+  datasource:
+    url: jdbc:h2:mem:devdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    # Alternativa file-based (persistente entre restarts):
+    # url: jdbc:h2:file:./data/devdb;DB_CLOSE_DELAY=-1
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+
+  # ==================== JPA / HIBERNATE ====================
+  jpa:
+    hibernate:
+      ddl-auto: update # create-drop (dev extremo) ou validate em cenários mais rígidos
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+        format_sql: true
+        show_sql: true
+    open-in-view: false
+
+  # ==================== H2 Console (acessível em /h2-console) ====================
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+      settings:
+        trace: false
+        web-allow-others: false
+
+  # ==================== Logging (dev-friendly) ====================
+  logging:
+    level:
+      root: INFO
+      com.klaillton: DEBUG # ajuste para seu package base
+      org.springframework.web: DEBUG
+      org.hibernate.SQL: DEBUG
+      org.hibernate.type.descriptor.sql: TRACE
+
+server:
+  port: 8080
+
+# ==================== Swagger / OpenAPI ====================
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    enabled: true
+    tags-sorter: alpha
+    operations-sorter: alpha
+
+# ==================== Application Properties ====================
+app:
+  version: 0.0.1-dev
+  environment: development
