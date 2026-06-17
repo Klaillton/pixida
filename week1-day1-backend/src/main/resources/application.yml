@@ -3,6 +3,14 @@ spring:
     name: week1-day1-backend
   profile:
     active: dev
+  datasource:
+    url: jdbc:postgresql://localhost:5432/pixida_study
+    username: postgres
+    password: postgres
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
 
 server:
   port: 8080
